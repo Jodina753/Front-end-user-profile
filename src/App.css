@@ -47,8 +47,10 @@ img {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 85vw;
-  height: 70vh;
+  width: 340px;
+  height: 640px;
+  max-width: 360px;
+  max-height: 660px;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
@@ -60,14 +62,14 @@ img {
 
 .header h2 {
   padding: 1.5em 1.8em;
-  margin: 0;
+  margin-top: 10px;
   font-size: 1.3rem;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 input {
@@ -77,9 +79,9 @@ input {
   outline: none;
   border: 1px solid #f5f0e9;
   padding: 0.8em;
-  width: 260px;
+  width: 305px;
   height: 40px;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: white;
 }
@@ -95,20 +97,31 @@ input::placeholder {
 }
 
 button {
-  margin-top: 1.5rem;
-  padding: 0.8em;
-  width: 260px;
-  height: 40px;
-  font-size: 1rem;
+  margin-top: 5px;
+  padding: 5px 0;
+  width: 305px;
+  height: 32px;
+  background: rgba(201, 212, 229, 0.8);
+  font-family: inherit;
+  font-size: 14px;
   cursor: pointer;
-  letter-spacing: 0.1em;
+  letter-spacing: 1.2px;
 }
 
 .footer {
   margin-top: 3rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   line-height: 2rem;
   text-align: center;
+}
+
+#sign-up-btn {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
 }
 
 @media only screen and (min-width: 600px) {
@@ -134,14 +147,13 @@ button {
 }
 
 @media only screen and (min-width: 1024px) {
-
   body {
     background-image: url("./images/michael-martinelli-mFbrMEVKCkc-unsplash.jpg");
   }
 
   .main-container {
-    width: 30vw;
-    height: 70vh;
+    width: 360px;
+    height: 640px;
   }
 
   .footer {
@@ -151,14 +163,25 @@ button {
 }
 
 @media only screen and (min-width: 1280px) {
-
   body {
     background-image: url("./images/vincent-ledvina-L1rOXHx5HAo-unsplash.jpg");
   }
 
   .main-container {
-    width: 30vw;
-    height: 80vh;
+    width: 380px;
+    height: 640px;
+    max-width: 400px;
+  }
+
+  input {
+    width: 320px;
+    height: 45px;
+    font-size: 14px;
+  }
+
+  button {
+    width: 320px;
+    height: 35px;
   }
 
   .footer {
