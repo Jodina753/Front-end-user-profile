@@ -1,20 +1,49 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import Dashboard from "./Dashboard";
+import SignUp from "./Sign-up";
 
 class Login extends Component {
-  state = { screen: 1 };
+  state = { screen: 0 };
 
   onInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   onLogin = async () => {
-    await axios.post("http://localhost:8002/login", this.state); //this is to login to existing account
+    try {
+      const response = await axios.post(
+        "http://localhost:8002/login",
+        this.state
+      );
+
+      if (response.data.status) {
+        localStorage.setItem("token", response.data.token);
+        this.setState({ screen: 2 });
+      } else {
+        console.log(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   onSignUp = async () => {
-    await axios.post("http://localhost:8002/add", this.state); //this is to create an account
+    try {
+      const response = await axios.post(
+        "http://localhost:8002/add",
+        this.state
+      );
+
+      if (response.data.status) {
+        this.setState({ screen: 1 });
+      } else {
+        console.log(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -30,7 +59,16 @@ class Login extends Component {
 
             <input type="text" name="password" placeholder="Password"></input>
 
-            <button onClick={this.onLogin}>Sign in</button>
+            <button
+              onClick={this.setState({
+                screen: 0,
+                email: " ",
+                username: " ",
+                password: " ",
+              })}
+            >
+              Sign in
+            </button>
           </div>
 
           <div className="footer">
@@ -39,7 +77,7 @@ class Login extends Component {
             <button
               id="sign-up-btn"
               onClick={() => {
-                this.setState({ screen: 0 });
+                this.setState({ screen: 1 });
               }}
             >
               <h4>Create an account</h4>
@@ -47,23 +85,9 @@ class Login extends Component {
           </div>
         </div>
 
-        {this.state.screen === 0 && (
-          <div className=" sign-up main-container">
-            <div className="header">
-              <h2>Registration</h2>
-            </div>
+        {this.state.screen === 1 && <SignUp />}
 
-            <div className=" sign-up input-container" onInput={this.onInput}>
-              <input type="text" name="email" placeholder="Email"></input>
-
-              <input type="text" name="username" placeholder="Username"></input>
-
-              <input type="text" name="password" placeholder="Password"></input>
-
-              <button onClick={this.onSignUp}>Sign Up!</button>
-            </div>
-          </div>
-        )}
+        {this.state.screen === 2 && <Dashboard email={this.state.email} />}
       </>
     );
   }
