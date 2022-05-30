@@ -15,7 +15,7 @@ class SignUp extends Component {
         this.state
       );
 
-      if (response.data.status) {
+      if (response.data.token) {
         this.props.setScreen(1);
       } else {
         console.log(response.data.error);

@@ -5,17 +5,18 @@ import SignUp from "./Components/Sign-up";
 import Login from "./Components/Log-in";
 
 class App extends Component {
-  state = { screen: 0 };
+  state = { screen: 0, };
 
   componentDidMount() {
     const token = localStorage.getItem("token");
 
-    if(token) {
-      this.setState({ screen: 2});
+    if (token) {
+      this.setState({ screen: 2 });
     }
   }
 
   setScreen = (screen) => {
+    console.log("set screen called");
     this.setState({ screen: screen });
   };
 

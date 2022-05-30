@@ -10,10 +10,9 @@ class Dashboard extends Component {
   }
 
   getPrivateData = async () => {
-    const response = await axios.get(
-      `http://localhost:8002/get/${localStorage.getItem("email")}`,
-      { headers: { token: localStorage.getItem("token") } }
-    );
+    const response = await axios.get(`http://localhost:8002/get`, {
+      headers: { token: localStorage.getItem("token") },
+    });
 
     this.setState({ userProfile: response.data.payload });
   };
