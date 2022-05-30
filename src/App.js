@@ -1,96 +1,35 @@
 import React, { Component } from "react";
 import "./App.css";
-import axios from "axios";
-import Dashboard from "./Dashboard";
-import SignUp from "./Sign-up";
+import Dashboard from "./Components/Dashboard";
+import SignUp from "./Components/Sign-up";
+import Login from "./Components/Log-in";
 
-class Login extends Component {
+class App extends Component {
   state = { screen: 0 };
 
-  onInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  componentDidMount() {
+    const token = localStorage.getItem("token");
 
-  onLogin = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8002/login",
-        this.state
-      );
-
-      if (response.data.status) {
-        localStorage.setItem("token", response.data.token);
-        this.setState({ screen: 2 });
-      } else {
-        console.log(response.data.error);
-      }
-    } catch (error) {
-      console.log(error);
+    if(token) {
+      this.setState({ screen: 2});
     }
-  };
+  }
 
-  onSignUp = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8002/add",
-        this.state
-      );
-
-      if (response.data.status) {
-        this.setState({ screen: 1 });
-      } else {
-        console.log(response.data.error);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  setScreen = (screen) => {
+    this.setState({ screen: screen });
   };
 
   render() {
     return (
       <>
-        <div className="main-container">
-          <div className="header">
-            <h2>Welcome Back</h2>
-          </div>
+        {this.state.screen === 0 && <Login setScreen={this.setScreen} />}
 
-          <div className="input-container">
-            <input type="text" name="email" placeholder="Email"></input>
+        {this.state.screen === 1 && <SignUp setScreen={this.setScreen} />}
 
-            <input type="text" name="password" placeholder="Password"></input>
-
-            <button
-              onClick={this.setState({
-                screen: 0,
-                email: " ",
-                username: " ",
-                password: " ",
-              })}
-            >
-              Sign in
-            </button>
-          </div>
-
-          <div className="footer">
-            <h4>Forgot password?</h4>
-            <p>or</p>
-            <button
-              id="sign-up-btn"
-              onClick={() => {
-                this.setState({ screen: 1 });
-              }}
-            >
-              <h4>Create an account</h4>
-            </button>
-          </div>
-        </div>
-
-        {this.state.screen === 1 && <SignUp />}
-
-        {this.state.screen === 2 && <Dashboard email={this.state.email} />}
+        {this.state.screen === 2 && <Dashboard setScreen={this.setScreen} />}
       </>
     );
   }
 }
 
-export default Login;
+export default App;
