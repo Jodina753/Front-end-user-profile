@@ -3,6 +3,7 @@ import "./App.css";
 import Dashboard from "./Components/Dashboard";
 import SignUp from "./Components/Sign-up";
 import Login from "./Components/Log-in";
+import Edit from "./Components/Edit";
 
 class App extends Component {
   state = { screen: 0, };
@@ -11,7 +12,7 @@ class App extends Component {
     const token = localStorage.getItem("token");
 
     if (token) {
-      this.setState({ screen: 2 });
+      this.setState({ screen: 2, screen: 3});
     }
   }
 
@@ -28,6 +29,8 @@ class App extends Component {
         {this.state.screen === 1 && <SignUp setScreen={this.setScreen} />}
 
         {this.state.screen === 2 && <Dashboard setScreen={this.setScreen} />}
+
+        {this.state.screen === 3 && <Edit setScreen={this.setScreen} />}
       </>
     );
   }

@@ -17,6 +17,9 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 *,
@@ -47,29 +50,42 @@ img {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 340px;
-  height: 640px;
-  max-width: 360px;
-  max-height: 660px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 550px;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
-  border-radius: 10px;
   color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
 }
 
-.header h2 {
-  padding: 1.5em 1.8em;
-  margin-top: 10px;
-  font-size: 1.3rem;
+.header {
+  margin-top: 70px;
+  padding-top: 10px;
+  width: 85%;
+  max-width: 460px;
+  height: 100px;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.header h3 {
+  font-size: 30px;
+}
+
+.header h3 span {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .input-container {
+  width: 85%;
+  max-width: 460px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 25px;
 }
 
 input {
@@ -78,114 +94,255 @@ input {
   border-radius: 3px;
   outline: none;
   border: 1px solid #f5f0e9;
-  padding: 0.8em;
-  width: 305px;
-  height: 40px;
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 45px;
   color: white;
 }
 
 input:hover {
   display: inline-block;
   box-shadow: 0 0 0 0.2rem;
-  backdrop-filter: blur(12rem);
+  backdrop-filter: blur(12px);
 }
 
 input::placeholder {
   color: white;
 }
 
-button {
-  margin-top: 5px;
-  padding: 5px 0;
-  width: 305px;
-  height: 32px;
-  background: rgba(201, 212, 229, 0.8);
-  font-family: inherit;
+label {
   font-size: 14px;
-  cursor: pointer;
-  letter-spacing: 1.2px;
+  color: white;
+  font-weight: 400;
+  line-height: 0;
+  letter-spacing: 0.5px;
 }
 
-.footer {
-  margin-top: 3rem;
-  letter-spacing: 0.1em;
-  line-height: 2rem;
-  text-align: center;
+.fgt-password {
+  width: 80%;
+  max-width: 350px;
+  text-align: right;
 }
 
-#sign-up-btn {
+#fgt-password-btn {
   border: none;
   outline: none;
   background: none;
+  font-size: 10px;
+  letter-spacing: 0.5;
   color: white;
-  font-size: 1.2em;
-  letter-spacing: 0.1em;
+  padding: 0;
+  cursor: pointer;
+}
+
+#sign-in-btn,
+#sign-up-btn {
+  border: 1px solid white;
+  margin-top: 25px;
+  padding: 5px 0;
+  width: 85%;
+  /* max-width: 460px; */
+  height: 38px;
+  border-radius: 3px;
+  background: rgb(116, 80, 184);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.footer {
+  font-size: 11px;
+  width: 320px;
+  margin-top: 120px;
+  text-align: center;
+}
+
+#register-btn {
+  border: none;
+  outline: none;
+  background: none;
+  color: rgb(159, 84, 230);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.back-btn-container {
+  margin-top: 30px;
+  width: 85%;
+  text-align: left;
+}
+
+#back-btn {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: none;
+  color: rgb(159, 84, 230);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ================================================================================ */
+
+/* Dashboard */
+
+.profile-container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  max-width: 600px;
+  background-image: none;
+  background: rgba(116, 80, 184, 0.39);
+  backdrop-filter: blur(8.5px);
+  color: white;
+}
+
+.nav-bar {
+  /* border: 1px solid greenyellow; */
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(116, 80, 184, 0.39);
+  backdrop-filter: blur(8.5px);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 10%);
+  height: 10vh;
+  width: 100vw;
+  max-width: 600px;
+}
+
+#dash-menu-icon,
+#dash-setting-icon {
+  /* border: 1px solid red; */
+  height: 32px;
+  width: 32px;
+  margin: 15px 10px;
+  color: #f5f0e9;
+}
+
+.profile-icon {
+  border-radius: 120px;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  margin: 35px 10px;
+}
+
+.profile-header {
+  /* border: 1px solid greenyellow; */
+  text-align: center;
+  width: 40%;
+  display: block;
+}
+
+.profile-header h1 {
+  font-size: 21px;
+  letter-spacing: 0.5px;
+}
+
+.profile-header h1 span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile-header h1 .span2 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+  width: 60%;
+}
+
+#twitter,
+#instagram,
+#github,
+#pinterest {
+  border: 1px solid white;
+  height: 42px;
+  width: 42px;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.profile-summary {
+  margin-top: 30px;
+  width: 80%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  line-height: 20px;
+}
+
+.footer-btn {
+  margin-top: 35px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-btn button {
+  padding: 5px;
+  height: 30px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: rgba(123, 84, 194, 0.568);
+  border: 1px solid #f5f0e9;
+  color: #f5f0e9;
+  outline: none;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 600px) {
-  body {
-    background-image: url("./images/massimiliano-morosinotto-3i5PHVp1Fkw-unsplash.jpg");
-  }
-
   .main-container {
-    width: 60vw;
-    height: 70vh;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  body {
-    background-image: url("./images/brandon-frie-H_mYBHcLEbk-unsplash.jpg");
+    width: 400px;
+    height: 550px;
+    max-width: 550px;
+    max-height: 600px;
+    border-radius: 10px;
   }
 
-  .main-container {
-    width: 55vw;
-    height: 70vh;
+  .header {
+    margin-top: 40px;
+  }
+
+  .profile-container {
+    width: 400px;
+    height: 700px;
+    max-width: 550px;
+    border-radius: 20px;
+  }
+
+  .nav-bar {
+    width: 400px;
+    max-width: 550px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .footer-btn {
+    margin-top: 25px;
+    margin-bottom: 30px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  body {
-    background-image: url("./images/michael-martinelli-mFbrMEVKCkc-unsplash.jpg");
-  }
-
   .main-container {
-    width: 360px;
-    height: 640px;
-  }
-
-  .footer {
-    text-align: center;
-    line-height: normal;
+    width: 430px;
+    height: 550px;
   }
 }
 
 @media only screen and (min-width: 1280px) {
-  body {
-    background-image: url("./images/vincent-ledvina-L1rOXHx5HAo-unsplash.jpg");
-  }
-
   .main-container {
-    width: 380px;
-    height: 640px;
-    max-width: 400px;
-  }
-
-  input {
-    width: 320px;
-    height: 45px;
-    font-size: 14px;
-  }
-
-  button {
-    width: 320px;
-    height: 35px;
-  }
-
-  .footer {
-    text-align: center;
-    line-height: normal;
+    width: 460px;
+    height: 570px;
+    max-width: 550px;
   }
 }

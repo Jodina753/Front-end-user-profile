@@ -28,34 +28,60 @@ class Login extends Component {
     }
   };
 
+  
+
   render() {
     return (
       <div className="main-container">
         <div className="header">
-          <h2>Welcome Back</h2>
+          <h3>
+            Welcome Back!<span>Login to your account.</span>
+          </h3>
         </div>
 
         <div className="input-container" onInput={this.onInput}>
-          <input type="text" name="email" placeholder="Email"></input>
+          <label for="email">E-mail</label>
+          <input className="email-input" type="text" name="email"></input>
 
-          <input type="text" name="password" placeholder="Password"></input>
-
-          <button onClick={this.onLogin}>Sign in</button>
+          <label for="password">Password</label>
+          <input
+            className="password-input"
+            type="password"
+            name="password"
+          ></input>
         </div>
+
+        <div className="fgt-password">
+          <button
+            id="fgt-password-btn"
+            onClick={() => {
+              this.props.setScreen(3);
+            }}
+          >
+            Forgot password?
+          </button>
+        </div>
+
+        <button id="sign-in-btn" onClick={this.onLogin}>
+          Sign in
+        </button>
 
         {this.state.error && <div>{this.state.error}</div>}
 
         <div className="footer">
-          <h4>Forgot password?</h4>
-          <p>or</p>
-          <button
-            id="sign-up-btn"
-            onClick={() => {
-              this.props.setScreen(1);
-            }}
-          >
-            <h4>Create an account</h4>
-          </button>
+          <p>
+            Don't have an account?{" "}
+            <span>
+              <button
+                id="register-btn"
+                onClick={() => {
+                  this.props.setScreen(1);
+                }}
+              >
+                Sign up
+              </button>
+            </span>
+          </p>
         </div>
       </div>
     );

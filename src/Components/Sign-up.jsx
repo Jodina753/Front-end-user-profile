@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FaArrowLeft } from "react-icons/fa";
 
 class SignUp extends Component {
   state = {};
@@ -18,7 +19,7 @@ class SignUp extends Component {
       if (response.data.token) {
         this.props.setScreen(1);
       } else {
-        console.log(response.data.error);
+        this.setState({ error: response.data.error });
       }
     } catch (error) {
       console.log(error);
@@ -28,19 +29,54 @@ class SignUp extends Component {
   render() {
     return (
       <>
-        <div className=" sign-up main-container">
-          <div className="header">
-            <h2>Registration</h2>
+        
+        <div className="main-container">
+          <div className="back-btn-container">
+            <button
+              id="back-btn"
+              onClick={() => {
+                this.props.setScreen(0);
+              }}
+            >
+              <FaArrowLeft  size={28} />
+            </button>
           </div>
 
-          <div className=" sign-up input-container" onInput={this.onInput}>
-            <input type="text" name="email" placeholder="Email"></input>
+          <div className="header">
+            <h3>Create Account</h3>
+          </div>
 
-            <input type="text" name="username" placeholder="Username"></input>
+          <div className="input-container" onInput={this.onInput}>
+            <label for="email">E-mail</label>
+            <input type="text" name="email"></input>
 
-            <input type="text" name="password" placeholder="Password"></input>
+            <label for="username">Username</label>
+            <input type="text" name="username"></input>
 
-            <button onClick={this.onSignUp}>Sign Up!</button>
+            <label for="password">Password</label>
+            <input type="password" name="password"></input>
+          </div>
+
+          <button id="sign-up-btn" onClick={this.onSignUp}>
+            Sign Up
+          </button>
+
+          {this.state.error && <div>{this.state.error}</div>}
+
+          <div className="footer">
+            <p>
+              Already have an account?{" "}
+              <span>
+                <button
+                  id="register-btn"
+                  onClick={() => {
+                    this.props.setScreen(0);
+                  }}
+                >
+                  Sign in
+                </button>
+              </span>
+            </p>
           </div>
         </div>
       </>
