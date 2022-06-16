@@ -47,13 +47,13 @@ class SignUp extends Component {
           </div>
 
           <div className="input-container" onInput={this.onInput}>
-            <label for="email">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input type="text" name="email"></input>
 
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input type="text" name="username"></input>
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" name="password"></input>
           </div>
 

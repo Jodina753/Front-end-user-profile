@@ -28,8 +28,6 @@ class Login extends Component {
     }
   };
 
-  
-
   render() {
     return (
       <div className="main-container">
@@ -40,10 +38,10 @@ class Login extends Component {
         </div>
 
         <div className="input-container" onInput={this.onInput}>
-          <label for="email">E-mail</label>
+          <label htmlFor="email">E-mail</label>
           <input className="email-input" type="text" name="email"></input>
 
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             className="password-input"
             type="password"

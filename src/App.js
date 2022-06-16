@@ -6,13 +6,13 @@ import Login from "./Components/Log-in";
 import Edit from "./Components/Edit";
 
 class App extends Component {
-  state = { screen: 0, };
+  state = { screen: 0 };
 
   componentDidMount() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      this.setState({ screen: 2, screen: 3});
+      this.setState({ screen: 2 });
     }
   }
 

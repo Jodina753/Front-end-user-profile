@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { FaArrowLeft, FaPen } from "react-icons/fa";
 
 class Edit extends Component {
@@ -8,7 +9,40 @@ class Edit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
- 
+  onEdit = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log(token);
+
+      const response = await axios.patch(
+        `http://localhost:8002/modify`,
+        this.state,
+        {
+          headers: { token },
+        }
+      );
+
+      if (response.data.status) {
+        alert("data updated");
+      } else {
+        alert(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //   onEdit = async () => {
+
+  //     const response = await axios.patch(`http://localhost:8002/modify`, {
+  //       headers: {
+  //         token: localStorage.getItem("token"),
+
+  //       },
+  //     });
+
+  // };
+
   render() {
     return (
       <>
@@ -17,7 +51,7 @@ class Edit extends Component {
             <button
               id="back-btn"
               onClick={() => {
-                this.props.setScreen(0);
+                this.props.setScreen(2);
               }}
             >
               <FaArrowLeft size={28} />
@@ -25,21 +59,23 @@ class Edit extends Component {
           </div>
 
           <div className="header">
-            <h3><FaPen size={26} /> Edit Account</h3>
+            <h3>
+              <FaPen size={26} /> Edit Account
+            </h3>
           </div>
 
           <div className="input-container" onInput={this.onInput}>
-            <label for="email">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input type="text" name="email"></input>
 
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input type="text" name="username"></input>
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" name="password"></input>
           </div>
 
-          <button id="sign-up-btn" onClick={this.onS}>
+          <button id="sign-up-btn" onClick={this.onEdit}>
             Save
           </button>
 
