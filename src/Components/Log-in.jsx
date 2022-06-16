@@ -9,13 +9,12 @@ class Login extends Component {
   };
 
   onLogin = async () => {
-    console.log("hello");
     try {
       const response = await axios.post(
         "http://localhost:8002/login",
         this.state
       );
-      console.log(response);
+
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("email", this.state.email);

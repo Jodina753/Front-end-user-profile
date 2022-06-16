@@ -12,7 +12,6 @@ class Edit extends Component {
   onEdit = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
 
       const response = await axios.patch(
         `http://localhost:8002/modify`,
@@ -31,17 +30,6 @@ class Edit extends Component {
       console.log(error);
     }
   };
-
-  //   onEdit = async () => {
-
-  //     const response = await axios.patch(`http://localhost:8002/modify`, {
-  //       headers: {
-  //         token: localStorage.getItem("token"),
-
-  //       },
-  //     });
-
-  // };
 
   render() {
     return (

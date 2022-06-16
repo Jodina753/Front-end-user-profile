@@ -17,7 +17,6 @@ class App extends Component {
   }
 
   setScreen = (screen) => {
-    console.log("set screen called");
     this.setState({ screen: screen });
   };
 
