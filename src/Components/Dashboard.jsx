@@ -39,7 +39,7 @@ class Dashboard extends Component {
 
   delete = async () => {
     const response = await axios.delete(
-      `http://localhost:8002/delete/${localStorage.getItem("email")}`,
+      `http://localhost:8002/delete/`,
       { headers: { token: localStorage.getItem("token") } }
     );
 
@@ -56,7 +56,7 @@ class Dashboard extends Component {
             <FaBars size={26} id="dash-menu-icon" />
             <FaSignOutAlt
               size={26}
-              id="dash-setting-icon"
+              id="dash-logout-icon"
               onClick={this.logOut}
             />
           </nav>

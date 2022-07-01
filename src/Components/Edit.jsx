@@ -22,9 +22,9 @@ class Edit extends Component {
       );
 
       if (response.data.status) {
-        alert("data updated");
+        console.log("data updated");
       } else {
-        alert(response.data.error);
+        this.setState({ error: response.data.error });
       }
     } catch (error) {
       console.log(error);
@@ -67,7 +67,10 @@ class Edit extends Component {
             Save
           </button>
 
-          {this.state.error && <div>{this.state.error}</div>}
+          <div className="error-message">
+            {this.state.error && <div>{this.state.error}</div>}
+          </div>
+          
         </div>
       </>
     );

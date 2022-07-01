@@ -202,7 +202,6 @@ label {
 }
 
 .nav-bar {
-  /* border: 1px solid greenyellow; */
   display: flex;
   justify-content: space-between;
   background-color: rgba(116, 80, 184, 0.39);
@@ -214,12 +213,12 @@ label {
 }
 
 #dash-menu-icon,
-#dash-setting-icon {
-  /* border: 1px solid red; */
+#dash-logout-icon {
   height: 32px;
   width: 32px;
   margin: 15px 10px;
   color: #f5f0e9;
+  cursor: pointer;
 }
 
 .profile-icon {
@@ -298,6 +297,13 @@ label {
   color: #f5f0e9;
   outline: none;
   cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  padding-top: 20px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media only screen and (min-width: 600px) {
