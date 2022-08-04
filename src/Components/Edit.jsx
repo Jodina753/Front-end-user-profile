@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { apiUrl } from "../config";
 import { FaArrowLeft, FaPen } from "react-icons/fa";
 
 class Edit extends Component {
@@ -14,7 +15,7 @@ class Edit extends Component {
       const token = localStorage.getItem("token");
 
       const response = await axios.patch(
-        `http://localhost:8002/modify`,
+        `${apiUrl}/modify`,
         this.state,
         {
           headers: { token },

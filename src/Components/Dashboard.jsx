@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { apiUrl } from "../config";
 import {
   FaSignOutAlt,
   FaBars,
@@ -9,7 +10,7 @@ import {
   FaPinterest,
   FaGithub,
 } from "react-icons/fa";
-import defaultIcon from "../images/download.png";
+import defaultIcon from "../Images/download.png";
 
 //screen: 2 - Dashboard
 class Dashboard extends Component {
@@ -20,7 +21,7 @@ class Dashboard extends Component {
   }
 
   getPrivateData = async () => {
-    const response = await axios.get(`http://localhost:8002/get`, {
+    const response = await axios.get(`${apiUrl}/get`, {
       headers: { token: localStorage.getItem("token") },
     });
 
@@ -28,7 +29,7 @@ class Dashboard extends Component {
   };
 
   logOut = async () => {
-    axios.delete(`http://localhost:8002/logout/`, {
+    axios.delete(`${apiUrl}/logout`, {
       headers: { token: localStorage.getItem("token") },
     });
 
@@ -38,10 +39,9 @@ class Dashboard extends Component {
   };
 
   delete = async () => {
-    await axios.delete(
-      `http://localhost:8002/delete/`,
-      { headers: { token: localStorage.getItem("token") } }
-    );
+    await axios.delete(`${apiUrl}/delete`, {
+      headers: { token: localStorage.getItem("token") },
+    });
 
     localStorage.clear();
 
@@ -62,11 +62,7 @@ class Dashboard extends Component {
           </nav>
 
           <div className="profile-icon-container">
-            <img
-              className="profile-icon"
-              src={defaultIcon}
-              alt="profile"
-            ></img>
+            <img className="profile-icon" src={defaultIcon} alt="profile"></img>
           </div>
 
           <div className="profile-header">
@@ -88,10 +84,10 @@ class Dashboard extends Component {
 
           <div className="profile-summary">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste
-              incidunt nesciunt magnam officia perferendis! Accusantium earum
-              quia ab consequuntur voluptate praesentium incidunt eos obcaecati
-              enim fugiat. Minus hic fugit vitae!
+              Hi, I'm Marlo. I've worked in development for 15 years across
+              numerous industries, including fintech, medtech and gaming. I have
+              experience with JavaScript, Ruby, Python and C++ and my ultimate
+              goal is to innovate and create solutions using elegant code.
             </p>
           </div>
 

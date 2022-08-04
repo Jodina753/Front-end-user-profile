@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { apiUrl } from "../config";
 import { FaArrowLeft } from "react-icons/fa";
 
 class SignUp extends Component {
@@ -12,7 +13,7 @@ class SignUp extends Component {
   onSignUp = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8002/add",
+        `${apiUrl}/add`,
         this.state
       );
 

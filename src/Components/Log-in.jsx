@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { apiUrl } from "../config";
 
 class Login extends Component {
   state = {};
@@ -11,7 +12,7 @@ class Login extends Component {
   onLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8002/login",
+        `${apiUrl}/login`,
         this.state
       );
 
