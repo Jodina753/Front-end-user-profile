@@ -28,7 +28,7 @@ class Dashboard extends Component {
   };
 
   logOut = async () => {
-    const response = axios.delete(`http://localhost:8002/logout/`, {
+    axios.delete(`http://localhost:8002/logout/`, {
       headers: { token: localStorage.getItem("token") },
     });
 
@@ -38,7 +38,7 @@ class Dashboard extends Component {
   };
 
   delete = async () => {
-    const response = await axios.delete(
+    await axios.delete(
       `http://localhost:8002/delete/`,
       { headers: { token: localStorage.getItem("token") } }
     );
@@ -65,7 +65,7 @@ class Dashboard extends Component {
             <img
               className="profile-icon"
               src={defaultIcon}
-              alt="profile-image"
+              alt="profile"
             ></img>
           </div>
 

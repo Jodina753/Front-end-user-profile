@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 class Login extends Component {
   state = {};
-
-  // notify = () => toast("Sorry, incorrect credntials");
 
   onInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -25,7 +21,6 @@ class Login extends Component {
         this.props.setScreen(2);
       } else {
         this.setState({ error: response.data.error });
-        toast("Sorry, incorrect credentials");
       }
     } catch (error) {
       console.log(error);
@@ -35,7 +30,6 @@ class Login extends Component {
   render() {
     return (
       <div className="main-container">
-        <ToastContainer />
         <div className="header">
           <h3>
             Welcome Back!<span>Login to your account.</span>
